@@ -1,0 +1,16 @@
+{
+  "name": "term-paper-snake",
+  "productName": "The snake game",
+  "version": "1.0.0",
+  "description": "The snake game",
+  "main": "main.js",
+  "scripts": {
+    "start": "npx electronmon ."
+  },
+  "author": "Bohdan Rohozianskyi",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^23.1.0",
+    "electronmon": "^2.0.2"
+  }
+}

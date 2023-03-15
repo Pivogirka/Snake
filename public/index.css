@@ -1,0 +1,13 @@
+body{
+  margin: 0;
+}
+
+#gameContainer{
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+#gameBoard{
+  background-color:rgb(29, 27, 25);
+}
