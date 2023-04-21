@@ -1,8 +1,8 @@
 import { Game } from "./Game/Game.js";
-import { Snake } from "./Snake/Snake.js";
-import { Board } from "./Board/Board.js";
-import { Apple } from "./Apple/Apple.js";
-import { Stub } from "./Stub/Stub.js";
+import { Snake } from "./Game/Snake/Snake.js";
+import { Board } from "./Game/Board/Board.js";
+import { Apple } from "./Game/Food/Apple/Apple.js";
+import { Stub } from "./Game/Food/Stub/Stub.js";
 //canvas.width = canvas.clientWidth;
 //canvas.height = canvas.clientHeight;
 const board = new Board();
@@ -18,19 +18,25 @@ apple.generatePosition(snake.tail);
 stub.generatePosition(snake.tail);
 
 function updateFrames() {
-  board.update();
-  snake.moving();
-  apple.draw(board.Context);
-  snake.draw(board.Context);
-  stub.draw(board.Context);
+    board.update();
+    snake.moving();
+    apple.draw(board.Context);
+    snake.draw(board.Context);
+    stub.draw(board.Context);
 
-  if (
-    game.isOver(snake.snakeHeadX, snake.snakeHeadY, snake.tail, board, apple)
-  ) {
-    clearInterval(gameLoop);
-    alert(" Game Over ");
-  }
-  if (snake.isAteApple(apple.appleX, apple.appleY)) {
-    apple.generatePosition(snake.tail);
-  }
+    if (
+        game.isOver(
+            snake.snakeHeadX,
+            snake.snakeHeadY,
+            snake.tail,
+            board,
+            apple,
+        )
+    ) {
+        clearInterval(gameLoop);
+        alert(" Game Over ");
+    }
+    if (snake.isAteApple(apple.x, apple.y)) {
+        apple.generatePosition(snake.tail);
+    }
 }
