@@ -3,6 +3,8 @@ import { Game } from "../Game.js";
 class Board extends Game {
     constructor() {
         super();
+
+        //TODO: fixe bug with board size (snake move over board)
         this.width = this.unitSize * this.rows;
         this.heigth = this.unitSize * this.cols;
 

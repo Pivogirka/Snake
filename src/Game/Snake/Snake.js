@@ -26,12 +26,7 @@ class Snake extends Game {
         //draw tail
         for (let i = 0; i < this.tail.length; i++) {
             contex.fillStyle = "lime";
-            contex.fillRect(
-                this.tail[i].x,
-                this.tail[i].y,
-                this.unitSize,
-                this.unitSize,
-            );
+            contex.fillRect(this.tail[i].x, this.tail[i].y, this.unitSize, this.unitSize);
         }
     }
     moving() {
@@ -71,10 +66,11 @@ class Snake extends Game {
         }
     }
 
-    //TODO: name it isAteFood and use with both Apple and Stub. Validate here eating stub
-    isAteApple(x, y) {
-        if (this.snakeHeadX == x && this.snakeHeadY == y) {
+    isAteFood(x, y, foodType) {
+        if (foodType === "apple" && this.snakeHeadX == x && this.snakeHeadY == y) {
             this.tail.push({ x, y });
+            return true;
+        } else if (foodType === "stub" && this.snakeHeadX == x && this.snakeHeadY == y) {
             return true;
         }
         return false;
