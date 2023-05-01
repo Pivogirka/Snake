@@ -16,7 +16,7 @@ class Snake extends Game {
     }
 
     //TODO: test it and change logic if it possible
-    draw(contex) {
+    draw(context) {
         //reposition of tail
         for (let i = this.tail.length - 1; i > 0; i--) {
             this.tail[i] = this.tail[i - 1];
@@ -24,9 +24,15 @@ class Snake extends Game {
         this.tail[0] = { x: this.snakeHeadX, y: this.snakeHeadY };
 
         //draw tail
+        context.fillStyle = "lime";
         for (let i = 0; i < this.tail.length; i++) {
-            contex.fillStyle = "lime";
-            contex.fillRect(this.tail[i].x, this.tail[i].y, this.unitSize, this.unitSize);
+            if (i === 0) {
+                context.fillRect(this.tail[i].x, this.tail[i].y, this.unitSize, this.unitSize);
+                context.lineWidth = 2;
+                context.strokeStyle = "white";
+                context.strokeRect(this.tail[i].x, this.tail[i].y, this.unitSize, this.unitSize);
+            }
+            context.fillRect(this.tail[i].x, this.tail[i].y, this.unitSize, this.unitSize);
         }
     }
     moving() {

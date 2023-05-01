@@ -13,6 +13,12 @@ class Game {
         contex.fillText(`Lives: ${this.lives}`, 15, 25);
     }
 
+    drawHead(contex, snakeHeadX, snakeHeadY) {
+        contex.font = `14px Roboto Helvetica Arial sans-serif`;
+        contex.fillStyle = "white";
+        contex.fillText(`Head coords: ${snakeHeadX + " " + snakeHeadY}`, 375, 500);
+    }
+
     liveLoss() {
         this.lives -= 1;
     }

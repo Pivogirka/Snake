@@ -19,17 +19,13 @@ apple.generatePosition(snake.tail);
 stub.generatePosition(snake.tail);
 
 function updateFrames() {
-    board.update();
-    snake.moving();
-    apple.draw(board.Context);
-    stub.draw(board.Context);
-    snake.draw(board.Context);
-    game.drawLives(board.Context);
-
     if (game.isOver(snake.snakeHeadX, snake.snakeHeadY, snake.tail, board, apple)) {
         clearInterval(gameLoop);
         alert("Game over");
     } else {
+        board.update();
+        snake.moving();
+
         if (snake.isAteFood(apple.x, apple.y, "apple")) {
             apple.generatePosition(snake.tail);
         }
@@ -37,5 +33,11 @@ function updateFrames() {
             game.liveLoss();
             stub.generatePosition(snake.tail);
         }
+
+        apple.draw(board.Context);
+        stub.draw(board.Context);
+        snake.draw(board.Context);
+        game.drawLives(board.Context);
+        game.drawHead(board.Context, snake.snakeHeadX, snake.snakeHeadY);
     }
 }
