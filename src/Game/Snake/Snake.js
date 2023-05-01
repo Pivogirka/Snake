@@ -9,8 +9,8 @@ class Snake extends Game {
                 y: this.unitSize * this.startCoords,
             },
         ];
-        this.snakeHeadX = this.tail[0].x;
-        this.snakeHeadY = this.tail[0].y;
+        this.headX = this.tail[0].x;
+        this.headY = this.tail[0].y;
         this.velocityX = 0;
         this.velocityY = 0;
     }
@@ -21,7 +21,7 @@ class Snake extends Game {
         for (let i = this.tail.length - 1; i > 0; i--) {
             this.tail[i] = this.tail[i - 1];
         }
-        this.tail[0] = { x: this.snakeHeadX, y: this.snakeHeadY };
+        this.tail[0] = { x: this.headX, y: this.headY };
 
         //draw tail
         context.fillStyle = "lime";
@@ -36,8 +36,8 @@ class Snake extends Game {
         }
     }
     moving() {
-        this.snakeHeadX += this.velocityX * this.unitSize;
-        this.snakeHeadY += this.velocityY * this.unitSize;
+        this.headX += this.velocityX * this.unitSize;
+        this.headY += this.velocityY * this.unitSize;
     }
 
     restart() {
@@ -47,8 +47,8 @@ class Snake extends Game {
                 y: this.unitSize * this.startCoords,
             },
         ];
-        this.snakeHeadX = this.tail[0].x;
-        this.snakeHeadY = this.tail[0].y;
+        this.headX = this.tail[0].x;
+        this.headY = this.tail[0].y;
         this.velocityX = 0;
         this.velocityY = 0;
     }
@@ -86,10 +86,10 @@ class Snake extends Game {
     }
 
     isAteFood(x, y, foodType) {
-        if (foodType === "apple" && this.snakeHeadX == x && this.snakeHeadY == y) {
+        if (foodType === "apple" && this.headX == x && this.headY == y) {
             this.tail.push({ x, y });
             return true;
-        } else if (foodType === "stub" && this.snakeHeadX == x && this.snakeHeadY == y) {
+        } else if (foodType === "stub" && this.headX == x && this.headY == y) {
             return true;
         }
         return false;

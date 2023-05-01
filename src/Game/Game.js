@@ -1,12 +1,22 @@
+import { restart } from "./restart.js";
 class Game {
-    constructor(updateFrames) {
+    constructor() {
+        this.restartBtn = document.getElementById("restart");
+        this.gameOverDOM = document.getElementById("gameoverMenu");
         this.loop;
-        this.gameOverDOM;
         this.unitSize = 25;
         this.rows = 20;
         this.cols = 20;
         this.startCoords = 5;
         this.lives = 3;
+        this.maxScore = 0;
+        this.currentScore = 0;
+    }
+
+    configure(updateFrames, snake) {
+        this.restartBtn.onclick = () => restart(this, updateFrames, snake);
+        document.addEventListener("keydown", (e) => snake.changeDirection(e));
+        this.loop = setInterval(updateFrames, 150);
     }
 
     restart(updateFrames) {
@@ -20,7 +30,7 @@ class Game {
         this.gameOverDOM.style.visibility = "visible";
     }
 
-    drawLives(contex) {
+    drawInfo(contex) {
         contex.font = `20px Roboto Helvetica Arial sans-serif`;
         contex.fillStyle = "white";
         contex.fillText(`Lives: ${this.lives}`, 15, 25);

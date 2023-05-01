@@ -3,8 +3,8 @@ import { Game } from "../Game.js";
 class Food extends Game {
     constructor() {
         super();
-        this.x;
-        this.y;
+        this.x = Math.floor(Math.random() * this.rows) * this.unitSize;
+        this.y = Math.floor(Math.random() * this.cols) * this.unitSize;
     }
 
     generatePosition(snakeTail) {
