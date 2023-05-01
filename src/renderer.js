@@ -12,7 +12,7 @@ const game = new Game();
 const apple = new Apple();
 const stub = new Stub();
 
-const gameLoop = setInterval(updateFrames, 190);
+const gameLoop = setInterval(updateFrames, 150);
 document.addEventListener("keydown", (e) => snake.changeDirection(e));
 
 apple.generatePosition(snake.tail);
@@ -28,6 +28,7 @@ function updateFrames() {
 
     if (game.isOver(snake.snakeHeadX, snake.snakeHeadY, snake.tail, board, apple)) {
         clearInterval(gameLoop);
+        alert("Game over");
     } else {
         if (snake.isAteFood(apple.x, apple.y, "apple")) {
             apple.generatePosition(snake.tail);
