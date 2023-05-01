@@ -5,33 +5,36 @@ const path = require("path");
 const isDev = process.env.NODE_DEV !== "production";
 //
 const createMainWindow = () => {
-  const mainWindow = new BrowserWindow({
-    title: "The snake game",
-    width: isDev ? 1400 : 700,
-    height: 607,
-  });
+    const mainWindow = new BrowserWindow({
+        title: "The snake game",
+        width: isDev ? 1400 : 700,
+        height: 607,
+        webPreferences: {
+            nodeIntegration: true,
+        },
+    });
 
-  //dev tools
-  if (isDev) {
-    mainWindow.webContents.openDevTools();
-  }
-  //
+    //dev tools
+    if (isDev) {
+        mainWindow.webContents.openDevTools();
+    }
+    //
 
-  mainWindow.loadFile(path.join(__dirname, "./public/index.html"));
+    mainWindow.loadFile(path.join(__dirname, "./public/index.html"));
 };
 
 app.whenReady().then(() => {
-  createMainWindow();
+    createMainWindow();
 
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
-  });
+    app.on("activate", () => {
+        if (BrowserWindow.getAllWindows().length === 0) {
+            createWindow();
+        }
+    });
 });
 
 app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
+    if (process.platform !== "darwin") {
+        app.quit();
+    }
 });

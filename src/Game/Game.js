@@ -1,10 +1,23 @@
 class Game {
-    constructor() {
+    constructor(updateFrames) {
+        this.loop;
+        this.gameOverDOM;
         this.unitSize = 25;
         this.rows = 20;
         this.cols = 20;
         this.startCoords = 5;
         this.lives = 3;
+    }
+
+    restart(updateFrames) {
+        this.lives = 3;
+        this.loop = setInterval(updateFrames, 150);
+        this.gameOverDOM.style.visibility = "hidden";
+    }
+
+    over() {
+        clearInterval(this.loop);
+        this.gameOverDOM.style.visibility = "visible";
     }
 
     drawLives(contex) {

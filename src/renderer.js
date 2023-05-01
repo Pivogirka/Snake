@@ -3,6 +3,7 @@ import { Snake } from "./Game/Snake/Snake.js";
 import { Board } from "./Game/Board/Board.js";
 import { Apple } from "./Game/Food/Apple/Apple.js";
 import { Stub } from "./Game/Food/Stub/Stub.js";
+import { restart } from "./Game/restart.js";
 
 //canvas.width = canvas.clientWidth;
 //canvas.height = canvas.clientHeight;
@@ -12,16 +13,18 @@ const game = new Game();
 const apple = new Apple();
 const stub = new Stub();
 
-const gameLoop = setInterval(updateFrames, 150);
 document.addEventListener("keydown", (e) => snake.changeDirection(e));
+document.getElementById("restart").onclick = () => restart(game, updateFrames, snake);
+game.loop = setInterval(updateFrames, 150);
+
+game.gameOverDOM = document.getElementById("gameoverMenu");
 
 apple.generatePosition(snake.tail);
 stub.generatePosition(snake.tail);
 
 function updateFrames() {
     if (game.isOver(snake.snakeHeadX, snake.snakeHeadY, snake.tail, board, apple)) {
-        clearInterval(gameLoop);
-        alert("Game over");
+        game.over();
     } else {
         board.update();
         snake.moving();

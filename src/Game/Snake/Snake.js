@@ -40,6 +40,19 @@ class Snake extends Game {
         this.snakeHeadY += this.velocityY * this.unitSize;
     }
 
+    restart() {
+        this.tail = [
+            {
+                x: this.unitSize * this.startCoords,
+                y: this.unitSize * this.startCoords,
+            },
+        ];
+        this.snakeHeadX = this.tail[0].x;
+        this.snakeHeadY = this.tail[0].y;
+        this.velocityX = 0;
+        this.velocityY = 0;
+    }
+
     changeDirection(e) {
         switch (e.code) {
             case "ArrowUp":

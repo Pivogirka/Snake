@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' ; style-src 'self'" />
         <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
         <link rel="stylesheet" href="./index.css" />
         <title>The snake game</title>
@@ -11,7 +11,10 @@
     <body>
         <div id="gameContainer">
             <canvas id="gameBoard"></canvas>
-            <div></div>
+            <div id="gameoverMenu">
+                <h1>Game is over</h1>
+                <button id="restart">Restart</button>
+            </div>
         </div>
     </body>
 

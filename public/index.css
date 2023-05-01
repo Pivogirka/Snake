@@ -11,3 +11,21 @@ body {
 #gameBoard {
     background-color: rgb(29, 27, 25);
 }
+
+#gameoverMenu {
+    position: absolute;
+    color: white;
+    display: grid;
+    visibility: hidden;
+    place-items: center;
+    background-color: green;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#restart {
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    box-shadow: 5px 5px 5px rgb(85, 81, 81);
+}
