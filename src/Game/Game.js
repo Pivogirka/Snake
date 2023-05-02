@@ -82,7 +82,7 @@ class Game {
     }
 
     drawLives(context) {
-        context.clearRect(0, 0, this.unitSize * 3, this.unitSize * 2);
+        context.clearRect(0, 0, this.unitSize * 3, this.unitSize * 2 - 1);
 
         switch (this.lives) {
             case 3:
