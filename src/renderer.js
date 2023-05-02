@@ -15,15 +15,16 @@ const stub = new Stub();
 game.configure(updateFrames, snake, board, apple);
 
 function updateFrames() {
+    snake.moving();
+
     if (game.isOver(snake.headX, snake.headY, snake.tail, board, apple)) {
         game.over();
     } else {
         board.update();
-        snake.moving();
 
+        //don't draw snake if game over
         if (snake.isAteFood(apple.x, apple.y, "apple")) {
             apple.generatePosition(snake.tail);
-            apple.draw(board.Context);
             game.addScore(board.Context);
         } else if (snake.isAteFood(stub.x, stub.y, "stub")) {
             game.liveLoss(board.Context);

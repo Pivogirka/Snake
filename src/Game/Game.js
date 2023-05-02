@@ -30,25 +30,25 @@ class Game {
             context.drawImage(this.apple, 15 * this.unitSize, this.unitSize / 2, this.unitSize, this.unitSize);
     }
 
-    configure(updateFrames, snake, board, apple) {
+    configure(updateFrames, snake, board) {
         let context = board.Context;
+        //updateInfoPanel now is not necessary, because snake is never drawn on it
         board.updateInfoPanel();
-        apple.draw(context);
         this.drawLives(context);
         this.drawScore(context);
-        this.restartBtn.onclick = () => restart(this, updateFrames, snake, board, apple);
+        this.restartBtn.onclick = () => restart(this, updateFrames, snake, board);
         document.addEventListener("keydown", (e) => snake.changeDirection(e));
         this.loop = setInterval(updateFrames, 150);
         this.apple.src = this.applePath;
         this.trophy.src = this.trophyPath;
     }
 
-    restart(updateFrames, board, snake, apple) {
+    restart(updateFrames, board, snake) {
         this.lives = 3;
         this.currentScore = 0;
         this.gameOverDOM.style.visibility = "hidden";
 
-        this.configure(updateFrames, snake, board, apple);
+        this.configure(updateFrames, snake, board);
     }
 
     over() {
@@ -116,12 +116,11 @@ class Game {
         this.drawLives(context);
     }
 
-    // TODO: rewrite isOver to use it more flexible
     isOver(snakeHeadX, snakeHeadY, snakeTail, board, apple) {
         if (this.lives === 0) {
             return true;
         }
-        if (snakeHeadX < 0 || snakeHeadX > board.width || snakeHeadY < 50 || snakeHeadY > board.heigth + this.unitSize) {
+        if (snakeHeadX < 0 || snakeHeadX >= board.width || snakeHeadY < 50 || snakeHeadY > board.heigth + this.unitSize) {
             return true;
         }
 
