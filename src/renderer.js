@@ -8,11 +8,11 @@ import { Stub } from "./Game/Food/Stub/Stub.js";
 //canvas.height = canvas.clientHeight;
 const board = new Board();
 const snake = new Snake();
-const game = new Game();
+const game = new Game(board.Context);
 const apple = new Apple();
 const stub = new Stub();
 
-game.configure(updateFrames, snake);
+game.configure(updateFrames, snake, board, apple);
 
 function updateFrames() {
     if (game.isOver(snake.headX, snake.headY, snake.tail, board, apple)) {
@@ -23,15 +23,16 @@ function updateFrames() {
 
         if (snake.isAteFood(apple.x, apple.y, "apple")) {
             apple.generatePosition(snake.tail);
+            apple.draw(board.Context);
+            game.addScore(board.Context);
         } else if (snake.isAteFood(stub.x, stub.y, "stub")) {
-            game.liveLoss();
+            game.liveLoss(board.Context);
             stub.generatePosition(snake.tail);
         }
 
         apple.draw(board.Context);
         stub.draw(board.Context);
         snake.draw(board.Context);
-        game.drawInfo(board.Context);
         game.drawHead(board.Context, snake.headX, snake.headY);
     }
 }

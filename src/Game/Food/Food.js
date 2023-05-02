@@ -4,12 +4,12 @@ class Food extends Game {
     constructor() {
         super();
         this.x = Math.floor(Math.random() * this.rows) * this.unitSize;
-        this.y = Math.floor(Math.random() * this.cols) * this.unitSize;
+        this.y = Math.floor(Math.random() * this.cols) * this.unitSize + 50;
     }
 
     generatePosition(snakeTail) {
         this.x = Math.floor(Math.random() * this.rows) * this.unitSize;
-        this.y = Math.floor(Math.random() * this.cols) * this.unitSize;
+        this.y = Math.floor(Math.random() * this.cols) * this.unitSize + 50;
 
         //prevents drawing apple in the snake
         //!test this
