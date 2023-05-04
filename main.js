@@ -1,6 +1,8 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 
+// process.env.NODE_DEV = "development";
+process.env.NODE_DEV = "production";
 //dev tools
 const isDev = process.env.NODE_DEV !== "production";
 //
