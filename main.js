@@ -7,7 +7,7 @@ const isDev = process.env.NODE_DEV !== "production";
 const createMainWindow = () => {
     const mainWindow = new BrowserWindow({
         title: "The snake game",
-        width: isDev ? 1400 : 700,
+        width: isDev ? 1400 : 513,
         height: 607,
         webPreferences: {
             nodeIntegration: true,

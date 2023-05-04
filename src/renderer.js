@@ -22,7 +22,6 @@ function updateFrames() {
     } else {
         board.update();
 
-        //don't draw snake if game over
         if (snake.isAteFood(apple.x, apple.y, "apple")) {
             apple.generatePosition(snake.tail);
             game.addScore(board.Context);
