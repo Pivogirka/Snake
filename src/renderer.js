@@ -13,7 +13,7 @@ const apple = new Apple();
 const stub = new Stub();
 
 game.configure(updateFrames, snake, board, apple);
-
+console.log(externalLibraries.nodeVersion());
 function updateFrames() {
     snake.moving();
 

@@ -1,8 +1,8 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 
-// process.env.NODE_DEV = "development";
-process.env.NODE_DEV = "production";
+process.env.NODE_DEV = "development";
+// process.env.NODE_DEV = "production";
 //dev tools
 const isDev = process.env.NODE_DEV !== "production";
 //
@@ -13,6 +13,8 @@ const createMainWindow = () => {
         height: 607,
         webPreferences: {
             nodeIntegration: true,
+            contextIsolation: true,
+            preload: path.join(__dirname, "preload.js"),
         },
     });
 
