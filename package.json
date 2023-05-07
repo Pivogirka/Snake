@@ -5,7 +5,8 @@
     "description": "The snake game",
     "main": "main.js",
     "scripts": {
-        "start": "npx electronmon ."
+        "start": "npx electronmon .",
+        "build": "electron-packager . dist --platform=win32 --asar --overwrite"
     },
     "author": "Bohdan Rohozianskyi",
     "license": "MIT",
