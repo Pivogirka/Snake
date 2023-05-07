@@ -33,6 +33,5 @@ function updateFrames() {
         apple.draw(board.Context);
         stub.draw(board.Context);
         snake.draw(board.Context);
-        game.drawHead(board.Context, snake.headX, snake.headY);
     }
 }
