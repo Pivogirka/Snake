@@ -13,7 +13,6 @@ const apple = new Apple();
 const stub = new Stub();
 
 game.configure(updateFrames, snake, board, apple);
-console.log(externalLibraries.nodeVersion());
 function updateFrames() {
     snake.moving();
 
@@ -23,6 +22,7 @@ function updateFrames() {
         board.update();
 
         if (snake.isAteFood(apple.x, apple.y, "apple")) {
+            //new Audio("../src/assets/changeDir.wav").play();
             apple.generatePosition(snake.tail);
             game.addScore(board.Context);
         } else if (snake.isAteFood(stub.x, stub.y, "stub")) {
