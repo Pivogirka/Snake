@@ -15,7 +15,6 @@ class Snake extends Game {
         this.velocityY = 0;
     }
 
-    //TODO: test it and change logic if it possible
     draw(context) {
         //reposition of tail
         for (let i = this.tail.length - 1; i > 0; i--) {

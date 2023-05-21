@@ -23,11 +23,11 @@ function updateFrames() {
 
         if (snake.isAteFood(apple.x, apple.y, "apple")) {
             //new Audio("../src/assets/changeDir.wav").play();
-            apple.generatePosition(snake.tail);
+            apple.generatePosition(snake.tail, stub);
             game.addScore(board.Context);
         } else if (snake.isAteFood(stub.x, stub.y, "stub")) {
             game.liveLoss(board.Context);
-            stub.generatePosition(snake.tail);
+            stub.generatePosition(snake.tail, apple);
         }
 
         apple.draw(board.Context);

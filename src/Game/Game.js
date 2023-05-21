@@ -124,7 +124,6 @@ class Game {
             return true;
         }
 
-        // TODO: test it
         for (let i = 1; i < snakeTail.length; i++) {
             if (snakeHeadX == snakeTail[i].x && snakeHeadY == snakeTail[i].y) {
                 //? used to prevent gameover when eating apple
